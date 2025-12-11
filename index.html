@@ -1,22 +1,275 @@
-<html>
+<!DOCTYPE html>
+<html lang="sr">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Sharper IT</title>
-  <style>
-    body{font-family:system-ui,Arial;margin:40px;line-height:1.6}
-    header{max-width:800px;margin:0 auto;text-align:center}
-    .btn{display:inline-block;margin-top:12px;padding:8px 14px;border-radius:8px;text-decoration:none;border:1px solid #222}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharper IT - SharePoint razvoj i konsultacije</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+            nav a {
+                color: #fff;
+                text-decoration: none;
+                font-weight: bold;
+                margin: 0 20px;
+                transition: color 0.3s;
+            }
+
+                nav a:hover {
+                    color: #FFD700;
+                }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            background: linear-gradient(135deg, #0078D4, #00BFFF);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+            header h1 {
+                font-size: 4rem;
+                margin-bottom: 20px;
+                animation: fadeInDown 1s ease;
+            }
+
+            header p {
+                font-size: 1.5rem;
+                animation: fadeInUp 1s ease;
+            }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+            section h2 {
+                text-align: center;
+                margin-bottom: 60px;
+                color: #0078D4;
+                position: relative;
+            }
+
+                section h2::after {
+                    content: '';
+                    width: 60px;
+                    height: 4px;
+                    background: #0078D4;
+                    display: block;
+                    margin: 10px auto 0;
+                    border-radius: 2px;
+                }
+
+        /* Services */
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+        }
+
+        .service {
+            flex: 1 1 300px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+            .service:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            }
+
+            .service h3 {
+                margin-bottom: 20px;
+                color: #0078D4;
+            }
+
+            .service p {
+                color: #555;
+            }
+
+        /* Contact */
+        form {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input, textarea {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 1rem;
+            width: 100%;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+            input:focus, textarea:focus {
+                border-color: #0078D4;
+                box-shadow: 0 0 10px rgba(0,120,212,0.3);
+                outline: none;
+            }
+
+        button {
+            padding: 18px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0078D4, #00BFFF);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+            button:hover {
+                background: linear-gradient(135deg, #005A9E, #1E90FF);
+                transform: translateY(-3px);
+            }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* Smooth fade in on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+            .fade-in.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Under construction</h1>
-    <h2>SharePoint Development and Consulting</h2>
-    <br />
-    <p>Tone Hadzica 2</p>
-    <p>21000 Novi Sad</p>
-  </header>
+
+    <nav>
+        <a href="#home">Početna</a>
+        <a href="#services">Usluge</a>
+        <a href="#contact">Kontakt</a>
+    </nav>
+
+    <header id="home">
+        <h1>Sharper IT</h1>
+        <p>SharePoint razvoj i konsultacije za moderno poslovanje</p>
+    </header>
+
+    <section id="services">
+        <h2>Naše usluge</h2>
+        <div class="services">
+            <div class="service fade-in">
+                <h3>Razvoj SharePoint rešenja</h3>
+                <p>Prilagođena rešenja za vašu organizaciju, uključujući SPFx web partove i prilagođene aplikacije.</p>
+            </div>
+            <div class="service fade-in">
+                <h3>Konsultacije i optimizacija</h3>
+                <p>Analiza postojećih SharePoint platformi i saveti za optimizaciju poslovnih procesa.</p>
+            </div>
+            <div class="service fade-in">
+                <h3>Migracija i integracija</h3>
+                <p>Pomagamo u migraciji podataka i integraciji SharePoint-a sa drugim Microsoft 365 servisima.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Kontaktirajte nas</h2>
+
+        <h4>Telefon: +381 64 896 2420</h4>
+        <!--<form>
+        <input type="text" placeholder="Ime i prezime" required>
+        <input type="email" placeholder="Email" required>
+        <textarea rows="5" placeholder="Poruka" required></textarea>
+        <button type="submit">Pošalji</button>
+    </form>-->
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Sharper IT. Sva prava zadržana.</p>
+    </footer>
+
+    <script>
+        // Fade-in on scroll
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = { threshold: 0.3 };
+        const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => { appearOnScroll.observe(fader); });
+    </script>
 
 </body>
 </html>
